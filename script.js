@@ -59,9 +59,11 @@ form.addEventListener("submit", e => {
   const nama = document.getElementById("nama").value;
   const status = document.getElementById("status").value;
 
+  // buat iframe untuk POST data
   const iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = API_URL + `?nama=${encodeURIComponent(nama)}&status=${encodeURIComponent(status)}`;
+  iframe.style.display = "none"; // sembunyikan iframe
+  // kirim data lewat query parameter supaya tidak kena CORS
+  iframe.src = `${API_URL}?nama=${encodeURIComponent(nama)}&status=${encodeURIComponent(status)}`;
   document.body.appendChild(iframe);
 });
 
