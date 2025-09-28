@@ -45,19 +45,19 @@
       </div>
     </section>
 
-    <section class="rsvp card">
-      <h3>💌 Konfirmasi Kehadiran</h3>
-      <form id="rsvpForm">
+    <form id="rsvpForm">
         <input type="text" id="nama" placeholder="Nama Anda" required>
         <select id="status" required>
-          <option value="">Pilih Kehadiran</option>
-          <option value="Hadir">Hadir</option>
-          <option value="Tidak Hadir">Tidak Hadir</option>
+            <option value="">Pilih Kehadiran</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
         </select>
         <button type="submit">Kirim</button>
-      </form>
-      <ul id="listRsvp"></ul>
-    </section>
+    </form>
+
+    <!-- Daftar RSVP akan muncul di sini -->
+    <ul id="listRsvp"></ul>
+
 
     <footer>
       <p>Terima kasih atas doa & kehadiran Anda 💖</p>
@@ -67,5 +67,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
