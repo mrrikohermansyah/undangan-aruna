@@ -77,8 +77,7 @@
   const listRsvp = document.getElementById("listRsvp");
   let rsvpData = [];
 
-  // -------------------------
-  // Submit form ke Google Form
+  // Submit RSVP ke Google Form
   form.addEventListener("submit", e => {
     e.preventDefault();
     const nama = document.getElementById("nama").value.trim();
@@ -103,8 +102,7 @@
       .catch(err => console.error(err));
   });
 
-  // -------------------------
-  // JSONP callback function
+  // Callback JSONP dari Apps Script
   function loadRSVP(data) {
     rsvpData = data;
     listRsvp.innerHTML = "";
@@ -115,8 +113,7 @@
     });
   }
 
-  // -------------------------
-  // Fungsi panggil JSONP
+  // Ambil daftar RSVP via JSONP
   function fetchRSVP() {
     const script = document.createElement("script");
     script.src = `${API_URL}?callback=loadRSVP&_=${Date.now()}`;
@@ -124,9 +121,8 @@
     script.onload = () => document.body.removeChild(script);
   }
 
-  // Load daftar pertama kali
+  // Load pertama kali
   fetchRSVP();
-
   // Refresh otomatis tiap 10 detik
   setInterval(fetchRSVP, 10000);
 </script>
@@ -140,4 +136,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
