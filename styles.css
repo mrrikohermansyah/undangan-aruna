@@ -1,0 +1,154 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #fff0f6, #ffe6eb);
+  color: #444;
+  position: relative;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #f9d5e5, #fbb1bd);
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.parents {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #d24a7b;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: #d24a7b;
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #b63a67;
+}
+
+#timer {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #d24a7b;
+}
+
+input, select, button {
+  width: 80%;
+  max-width: 250px;
+  padding: 0.6rem;
+  margin: 0.3rem auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: block;
+}
+
+button {
+  background: #d24a7b;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #b63a67;
+}
+
+footer {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Galeri Foto */
+.gallery .photos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Tombol Musik */
+#toggleMusic {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #d24a7b;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+#toggleMusic:hover {
+  background: #b63a67;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}

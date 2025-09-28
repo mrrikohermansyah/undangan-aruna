@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undangan Akikah - Aruna Darisa Hermansyah</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Musik Latar -->
+  <audio id="bg-music" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  <button id="toggleMusic">🔊 Matikan Musik</button>
+
+  <div class="container">
+    <header class="hero">
+      <h1 class="title">Undangan Akikah</h1>
+      <h2 class="name">Aruna Darisa Hermansyah</h2>
+      <p class="parents">Putri dari Bapak Riko Hermansyah & Ibu Tiara Anggrainy</p>
+    </header>
+
+    <section class="event card">
+      <h3>🕊 Detail Acara</h3>
+      <p><strong>Tanggal:</strong> Sabtu, 11 Oktober 2025</p>
+      <p><strong>Waktu:</strong> 13:00 WIB</p>
+      <p><strong>Tempat:</strong> Jl. Korindo Gg. Damai (Depan Pertashop Korindo)</p>
+      <a class="btn" href="https://maps.app.goo.gl/XQ4m3kUsujXatx9J8" target="_blank">📍 Lihat di Google Maps</a>
+    </section>
+
+    <section class="countdown card">
+      <h3>⏳ Hitung Mundur</h3>
+      <div id="timer">00 Hari 00 Jam 00 Menit 00 Detik</div>
+    </section>
+
+    <!-- Galeri Foto -->
+    <section class="gallery card">
+      <h3>📸 Galeri Aruna</h3>
+      <div class="photos">
+        <img src="foto1.jpg" alt="Foto Bayi 1">
+        <img src="foto2.jpg" alt="Foto Bayi 2">
+        <img src="foto3.jpg" alt="Foto Bayi 3">
+      </div>
+    </section>
+
+    <section class="rsvp card">
+      <h3>💌 Konfirmasi Kehadiran</h3>
+      <form id="rsvpForm">
+        <input type="text" id="nama" placeholder="Nama Anda" required>
+        <select id="status" required>
+          <option value="">Pilih Kehadiran</option>
+          <option value="Hadir">Hadir</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+        </select>
+        <button type="submit">Kirim</button>
+      </form>
+      <ul id="listRsvp"></ul>
+    </section>
+
+    <footer>
+      <p>Terima kasih atas doa & kehadiran Anda 💖</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
