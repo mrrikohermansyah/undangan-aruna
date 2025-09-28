@@ -46,12 +46,26 @@ function render() {
 const music = document.getElementById("bg-music");
 const toggleBtn = document.getElementById("toggleMusic");
 
+// Coba play otomatis (dengan mute dulu)
+music.play().catch(() => {
+  console.log("Autoplay diblokir, tunggu interaksi user...");
+});
+
+// Begitu user klik pertama kali di mana saja → unmute musik
+document.body.addEventListener("click", function () {
+  if (music.muted) {
+    music.muted = false;
+    music.play();
+  }
+}, { once: true });
+
+// Kontrol tombol
 toggleBtn.addEventListener("click", () => {
   if (music.paused) {
     music.play();
-    toggleBtn.textContent = "🔊 Matikan Musik";
+    toggleBtn.textContent = "🔊";
   } else {
     music.pause();
-    toggleBtn.textContent = "🎵 Hidupkan Musik";
+    toggleBtn.textContent = "🎵";
   }
 });
