@@ -84,6 +84,8 @@ input, select, button {
   border-radius: 8px;
   border: 1px solid #ddd;
   display: block;
+  box-sizing: border-box; /* Tambahkan ini */
+  height: 40px;
 }
 
 button {
@@ -158,3 +160,4 @@ footer {
   from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
 }
+
