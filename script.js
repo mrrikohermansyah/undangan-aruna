@@ -21,7 +21,7 @@ setInterval(() => {
 
 
 
-   const API_URL = "https://script.google.com/macros/s/AKfycbzd6So0tCOAmwWl7h1Y6ZgvhpuzDVv05Jx3Ues8CRZlDUuWa6YPB7Pp0A-J1zV-QtSA/exec";
+   const API_URL = "https://script.google.com/macros/s/AKfycbxuHnF-3c8Qbpk5qy3bt5V9wdmn55OCWCZzTWA3vMVkVym1jHb7DrNJ8sMNSMJ21rm-/exec";
     const form = document.getElementById("rsvpForm");
     const listRsvp = document.getElementById("listRsvp");
 
