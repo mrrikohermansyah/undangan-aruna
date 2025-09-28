@@ -19,46 +19,6 @@ setInterval(() => {
   timerEl.innerText = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
 }, 1000);
 
-const API_URL = "https://script.google.com/macros/s/AKfycbyxs1im0bpGarkysBS2UyNB2CaeSXbUTh_WINokx20BXqrbjXnvHB5lR6NUKkt2PHjo/exec";
-const form = document.getElementById("rsvpForm");
-const listRsvp = document.getElementById("listRsvp");
-
-// Fungsi load daftar RSVP
-function loadRSVP() {
-  // Gunakan GET request biasa
-  fetch(API_URL)
-    .then(res => res.json())
-    .then(data => {
-      listRsvp.innerHTML = "";
-      data.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nama} - ${item.status}`;
-        listRsvp.appendChild(li);
-      });
-    })
-    .catch(err => console.error(err));
-}
-
-// Submit form via query parameter (GET)
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const nama = document.getElementById("nama").value;
-  const status = document.getElementById("status").value;
-
-  const url = `${API_URL}?nama=${encodeURIComponent(nama)}&status=${encodeURIComponent(status)}`;
-  
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      loadRSVP(); // refresh daftar
-      form.reset();
-    })
-    .catch(err => console.error(err));
-});
-
-// Load daftar pertama kali
-loadRSVP();
-
 
 // Musik latar kontrol
 const music = document.getElementById("bg-music");
