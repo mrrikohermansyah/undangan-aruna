@@ -19,28 +19,52 @@ setInterval(() => {
   timerEl.innerText = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
 }, 1000);
 
-// RSVP sederhana
-const form = document.getElementById("rsvpForm");
-const listRsvp = document.getElementById("listRsvp");
-const data = [];
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const nama = document.getElementById("nama").value;
-  const status = document.getElementById("status").value;
-  data.push({ nama, status });
-  render();
-  form.reset();
-});
 
-function render() {
-  listRsvp.innerHTML = "";
-  data.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `${item.nama} - ${item.status}`;
-    listRsvp.appendChild(li);
-  });
-}
+   const API_URL = "https://script.google.com/macros/s/AKfycbwPqxZ3UoLPESaf8KfM1uFU1LDbFYClB5IoWKu57oPhNfL6ZCd0N-5kgKKu-IPEAaTU/exec";
+    const form = document.getElementById("rsvpForm");
+    const listRsvp = document.getElementById("listRsvp");
+
+    function loadRSVP() {
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+          listRsvp.innerHTML = ""; // kosongin dulu
+          data.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.nama} - ${item.status}`;
+            listRsvp.appendChild(li);
+          });
+        })
+        .catch(err => console.error("Error:", err));
+    }
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const nama = document.getElementById("nama").value;
+      const status = document.getElementById("status").value;
+
+      fetch(API_URL, {
+        method: "POST",
+        body: JSON.stringify({ nama, status }),
+        headers: { "Content-Type": "application/json" }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.result === "success") {
+            loadRSVP();   // refresh daftar
+            form.reset(); // kosongin form
+          } else {
+            alert("Gagal menyimpan data, coba lagi ya 🙏");
+          }
+        })
+        .catch(err => console.error("Error:", err));
+    });
+
+    // load daftar saat pertama kali buka halaman
+    loadRSVP();
+
 
 // Musik latar kontrol
 const music = document.getElementById("bg-music");
