@@ -19,56 +19,49 @@ setInterval(() => {
   timerEl.innerText = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
 }, 1000);
 
+const API_URL = "https://script.google.com/macros/s/AKfycbzO-RLcSrnjAQcIX9PA44Djqzj_QZjxYVPUD_cohcGC5xnPqPPlZsJwxD0l9c4kDpAk/exec";
+    const form = document.getElementById("rsvpForm");
+    const listRsvp = document.getElementById("listRsvp");
 
-
-const API_URL = "https://script.google.com/macros/s/AKfycbxzqedTbB66vaeJP9HFZ_0PVt-5zlfLNRStcRaqWLYipI9QLR3IFBMmIv8Vwu1mpeHq/exec";
-const form = document.getElementById("rsvpForm");
-const listRsvp = document.getElementById("listRsvp");
-
-// Tangkap pesan dari iframe
-window.addEventListener("message", event => {
-  const data = event.data;
-
-  // Kalau data array → tampilkan daftar
-  if (Array.isArray(data)) {
-    listRsvp.innerHTML = "";
-    data.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = `${item.nama} - ${item.status}`;
-      listRsvp.appendChild(li);
+    // Tangkap data dari iframe Apps Script
+    window.addEventListener("message", event => {
+      const data = event.data;
+      if (Array.isArray(data)) {
+        // Tampilkan daftar RSVP
+        listRsvp.innerHTML = "";
+        data.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = `${item.nama} - ${item.status}`;
+          listRsvp.appendChild(li);
+        });
+      }
     });
-  } 
-  // Kalau object result → response POST
-  else if (data.result === "success") {
+
+    // Load daftar RSVP
+    function loadRSVP() {
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = API_URL;
+      document.body.appendChild(iframe);
+    }
+
+    // Submit form
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const status = document.getElementById("status").value;
+
+      // Kirim data lewat iframe agar tidak kena CORS
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = `${API_URL}?nama=${encodeURIComponent(nama)}&status=${encodeURIComponent(status)}`;
+      document.body.appendChild(iframe);
+
+      form.reset();
+    });
+
+    // Load daftar pertama kali
     loadRSVP();
-    form.reset();
-  }
-});
-
-// Fungsi load daftar RSVP
-function loadRSVP() {
-  const iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = API_URL;
-  document.body.appendChild(iframe);
-}
-
-// Submit form
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const nama = document.getElementById("nama").value;
-  const status = document.getElementById("status").value;
-
-  // buat iframe untuk POST data
-  const iframe = document.createElement("iframe");
-  iframe.style.display = "none"; // sembunyikan iframe
-  // kirim data lewat query parameter supaya tidak kena CORS
-  iframe.src = `${API_URL}?nama=${encodeURIComponent(nama)}&status=${encodeURIComponent(status)}`;
-  document.body.appendChild(iframe);
-});
-
-// Load daftar saat pertama kali
-loadRSVP();
 
 
 // Musik latar kontrol
